@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import {
   Activity, ArrowLeft, ArrowRight, BarChart3, BrainCircuit, ChevronRight, CirclePlay,
-  FileText, Instagram, Linkedin, LockKeyhole, Menu, MonitorHeart, ShieldCheck,
+  FileText, HeartPulse, Instagram, Linkedin, Menu, ShieldCheck,
   Stethoscope, Upload, X, Youtube,
 } from "lucide-react";
 import heroHospital from "@/assets/hero-hospital-image.png.asset.json";
@@ -18,7 +18,7 @@ function Reveal({ children, className = "" }: { children: ReactNode; className?:
     const element = ref.current;
     if (!element) return;
     const observer = new IntersectionObserver(([entry]) => {
-      if (entry?.isIntersecting) { element.dataset.visible = "true"; observer.disconnect(); }
+      if (entry?.isIntersecting) { element.dataset["visible"] = "true"; observer.disconnect(); }
     }, { threshold: 0.12 });
     observer.observe(element);
     return () => observer.disconnect();
@@ -110,7 +110,7 @@ export function StepItem({ number, title, text, icon: Icon }: (typeof steps)[num
 }
 
 export function HowItWorks() {
-  return <section id="how-it-works" className="section-space"><div className="page-shell grid items-center gap-12 lg:grid-cols-2"><Reveal><p className="eyebrow">How it works</p><h2 className="section-title mt-4 max-w-xl">From Reports to Real Insights<br />in 3 Simple Steps</h2><p className="section-copy mt-4">Upload your medical reports and let TrueVitals do the rest.</p><div className="mt-9 space-y-7">{steps.map((step) => <StepItem key={step.number} {...step} />)}</div><ActionLink href="#" className="mt-9">Learn More <ArrowRight size={17} /></ActionLink></Reveal><Reveal><div data-placeholder="medical-data-image" className="medical-visual group"><img src={medicalData.url} alt="Medical data and connected care visualization" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" /><div className="absolute inset-0 bg-image-wash" /><div className="absolute bottom-6 left-6 right-6 rounded-2xl border border-overlay-border bg-overlay p-5 text-overlay-foreground backdrop-blur-xl"><MonitorHeart className="text-accent" /><p className="mt-3 text-sm font-semibold">Clear insights from your connected health data.</p></div></div></Reveal></div></section>;
+  return <section id="how-it-works" className="section-space"><div className="page-shell grid items-center gap-12 lg:grid-cols-2"><Reveal><p className="eyebrow">How it works</p><h2 className="section-title mt-4 max-w-xl">From Reports to Real Insights<br />in 3 Simple Steps</h2><p className="section-copy mt-4">Upload your medical reports and let TrueVitals do the rest.</p><div className="mt-9 space-y-7">{steps.map((step) => <StepItem key={step.number} {...step} />)}</div><ActionLink href="#" className="mt-9">Learn More <ArrowRight size={17} /></ActionLink></Reveal><Reveal><div data-placeholder="medical-data-image" className="medical-visual group"><img src={medicalData.url} alt="Medical data and connected care visualization" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" /><div className="absolute inset-0 bg-image-wash" /><div className="absolute bottom-6 left-6 right-6 rounded-2xl border border-overlay-border bg-overlay p-5 text-overlay-foreground backdrop-blur-xl"><HeartPulse className="text-accent" /><p className="mt-3 text-sm font-semibold">Clear insights from your connected health data.</p></div></div></Reveal></div></section>;
 }
 
 export function StatsStrip() {
