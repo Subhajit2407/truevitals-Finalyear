@@ -27,6 +27,11 @@ dist-ssr
 .DS_Store
 *.suo
 *.ntvs*
-*.njsproj
-*.sln
 *.sw?
+ 
+# Large media / master video files (decoupled into webp frames for GitHub compatibility)
+*.mp4
+*.mov
+*.avi
+*.mkv
+public/media/*.mp4
